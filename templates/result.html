@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Analysis Results</h1>
+
+        {% if csv_data %}
+        <h2>CSV Data Analysis</h2>
+        <p><strong>Average Erosion Rate:</strong> {{ csv_data.avg_erosion }} m/year</p>
+        <p><strong>Average Sea Level Rise:</strong> {{ csv_data.avg_sea_level_rise }} mm/year</p>
+        {% endif %}
+
+        {% if img_data %}
+        <h2>Image Analysis</h2>
+        <p><strong>Estimated Coastline Length:</strong> {{ img_data.coastline_length }} pixels</p>
+        <p><strong>Estimated Sea Level Rise:</strong> {{ img_data.sea_level_rise }} m</p>
+        <p><strong>Estimated Affected Area:</strong> {{ img_data.erosion_area }} sq km</p>
+        <p><strong>Vegetation Loss:</strong> {{ img_data.vegetation_loss }}%</p>
+        {% endif %}
+
+        <a href="/">Upload another file</a>
+    </div>
+</body>
+</html>
